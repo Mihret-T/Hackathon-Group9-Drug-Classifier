@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classification Result</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .details {
+            display: none;
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            text-align: left;
+            width: 50%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        button {
+            margin-top: 10px;
+            padding: 10px;
+            cursor: pointer;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h2>Classification Result</h2>
+
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% else %}
+        <img src="{{ image_url }}" alt="Uploaded Image" width="300">
+        <p><strong>{{ result_message }}</strong></p>
+
+        <button onclick="toggleDetails()">View More Details</button>
+        <div class="details" id="details">
+            <h3>Full Response</h3>
+            <pre>{{ result | tojson(indent=2) }}</pre>
+        </div>
+    {% endif %}
+
+    <br><br>
+    <a href="/">Upload Another Image</a>
+
+    <script>
+        function toggleDetails() {
+            var details = document.getElementById("details");
+            if (details.style.display === "none") {
+                details.style.display = "block";
+            } else {
+                details.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>

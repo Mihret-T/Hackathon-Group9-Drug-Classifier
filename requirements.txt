@@ -1,0 +1,14 @@
+flask
+flask-cors
+requests
+roboflow
+ultralytics
+opencv-python
+pytesseract
+torch
+torchvision
+torchaudio
+numpy
+matplotlib
+pillow
+streamlit
